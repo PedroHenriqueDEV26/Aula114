@@ -1,0 +1,16 @@
+body{
+    background-size: cover;
+}
+
+canvas{
+    animation-name: exemple;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    margin: 30px;
+}
+
+@keyframes exemple{
+    from{
+        box-shadow: 1px 1px 38px yellow;
+    } to{box-shadow: 1px 1px 38px green;}
+}
