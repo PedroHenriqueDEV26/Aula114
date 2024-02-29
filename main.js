@@ -1,8 +1,16 @@
+var takeImageM = ""
 var video = ""
 var results = []
-var narizX, narizY
-function preload(){
+var rightWristX, rightWristY
+var takeImageH = ""
+var rightEarX, rightEarY, leftEarX, leftEarY
 
+
+
+
+function preload(){
+    takeImageM = loadImage("controle.png")
+    takeImageH = loadImage("headset.png")
 }
 
 function setup(){
@@ -21,11 +29,17 @@ function modelLoaded(){
 
 function gotPoses(results){
    if(results.length > 0){
-    // console.log(results);
-    // console.log("narizX"+results[0].pose.nose.x)
-    // console.log("narizY"+results[0].pose.nose.y)
-    narizX = results[0].pose.nose.x - 96;
-    narizY = results[0].pose.nose.y - 50;
+    console.log(results);
+   //  console.log("rightWristX"+results[0].pose.nose.x)
+    //   console.log("rightWristY"+results[0].pose.nose.y)
+    rightWristX = results[0].pose.rightWrist.x - 100;
+    rightWristY = results[0].pose.rightWrist.y - 50;   
+    
+    rightEarX = results[0].pose.rightEar.x - 80
+    rightEarY = results[0].pose.rightEar.y 
+
+    leftEarX = results[0].pose.leftEar.x
+    leftEarY = results[0].pose.leftEar.y - 100
    }
     
 }
@@ -33,10 +47,15 @@ function gotPoses(results){
 function draw(){
     image(video,0, 0, 500, 400)
     fill("red")
-    circle(narizX, narizY, 25)
+    //circle(rightWristX, rightWristY, 25)
+    image(takeImageM, rightWristX, rightWristY, 100,80)
+
+    image(takeImageH, rightEarX, leftEarY, 180,165)
 }
 
 function takeSnapshot(){
     save("img.png")
 }
+
+
 
